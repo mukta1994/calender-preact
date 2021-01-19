@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Preact calendar</title>
+	<style>
+		.code {
+			font-family: monospace;
+		}
+	  
+		.calendar {
+			width: 350px;
+			text-align: center;
+      background-color: aquamarine;
+      border-radius: 10%;
+      margin-left: 20px;
+		}
+		
+		.calendar-header {
+			font-size: 1.1em;
+		}
+		.calendar-header > .nav {
+			cursor: pointer;
+		}
+		.calendar-header > .label {
+			flex: auto;
+		}
+		
+		.calendar-weekdays {
+			border-bottom: 2px solid #BBBDBF;
+		}
+		
+		.calendar-weekdays > span,
+		.calendar-dates > .date {
+			display: inline-block;
+			margin-bottom: 2px;
+			padding: 0.3em 0;
+      height: 28px;
+      border-radius:50%;
+		}
+
+    .calendar-weekdays > span{
+			width: 14.2857%;	 /*100% / 7 */
+
+    }
+		
+		.calendar-dates > .date:not(.date-empty) {
+			cursor: pointer;
+		}
+		.calendar-dates > .date-today {
+			/* background-color:rgb(176 61 61); */
+      border-bottom: 2px solid rgb(176 61 61);
+      background: linear-gradient(transparent, rgb(176 61 61));
+
+      
+		}
+		.calendar-dates > .date-selected {
+			margin-bottom: 0;
+			border-bottom: 2px solid #0077EF;
+		}
+		.calendar-dates > .date-selected,
+		.calendar-dates > .date:not(.date-empty):hover {
+			background: linear-gradient(transparent, rgba(0, 119, 239, 0.2));
+		}
+    .calendar-dates {
+      width: 100%;
+      display: grid;
+      text-align: center;
+      grid-template-columns: calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7);
+    }
+          h4 {
+            margin: 0;
+          }
+
+
+          nav {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+          }
+
+     
+
+	</style>
+	<script type="module" >
+		import renderCalendar from './calendar.js';
+
+		renderCalendar(
+			document.getElementById('calendar-container'),
+		//	(date) => document.querySelector('input[name="date"]').value = "hi"
+		);
+	</script>
+</head>
+<body>
+
+	 <h1>Assignment</h1>
+	<p>Implement <span class="code">calendar.js</span> (see <span class="code">&lthead&gt;</span>) such that:</p>
+	<ul>
+		<li>It renders a calendar in <span class="code">.calendar-container</span> (see example markup)</li>
+		<li>When a date cell is clicked, the callback receives it as a <span class="code">Date</span> object</li>
+		<li>Preferably, use <a href="https://preactjs.com/guide/v10/getting-started/#no-build-tools-route">preact.js</a> with
+			<a href="https://github.com/developit/htm">htm</a> (the no-build-tools route). (Preact.js documentation is very brief in many spots. Fortunately, React's official documentation fills in the gaps, since preact works <em>almost</em> the same.)</li>
+		<li>Preferably, use <a href="https://preactjs.com/guide/v10/components#functional-components">functional components</a>
+			with <a href="https://preactjs.com/guide/v10/hooks">hooks</a> (instead of class components)
+		</li>
+		<li>You <em>may</em> use whatever library you're most comfortable with, but you'll impress me way more by learning something new.</li>
+		<li>If you'd can't wrap your head around Preact or functional components + hooks, feel free to use any other library.</li>
+		<li>You <em>may</em> use Babel, webpack, Typescript or other tools, but you can absolutely implement this without any of them</li>
+		<li>Bonus points if you set up Babel to <a href="https://github.com/developit/htm/tree/master/packages/babel-plugin-htm">compile away html</a> (in any way you like)</li>
+	</ul>
+	<p>CSS is already present. Plus there's enough markup to strongly hint how to use it.</p>
+
+	<div id="calendar-container">
+
+	</div>
+
+</body>
+</html>
